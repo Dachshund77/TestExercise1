@@ -14,7 +14,33 @@ namespace TestExexise1
 
         public static double CalcPrice(double km)
         {
-            return 9.9;
+            if (Double.IsNegative(km))
+            {
+                return 0;
+            }
+            double returnValue = 2500;
+            double remainingKm = km;
+
+            remainingKm = Math.Floor(remainingKm);
+
+            if (remainingKm > 500 )
+            {
+                double tempkm = remainingKm - 500; // Everything above 500 
+                remainingKm -= tempkm;  
+                returnValue += tempkm * 6; 
+            } 
+            
+            if (remainingKm >= 100)
+            {
+                double tempkm = remainingKm - 99; // Everything above 100
+                remainingKm -= tempkm;
+                returnValue += tempkm * 8;
+            }
+
+            // Remainder 
+            returnValue += remainingKm * 10;
+
+            return returnValue;
         }
     }
 }
